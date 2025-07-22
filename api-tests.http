@@ -1,0 +1,131 @@
+### Variables
+@baseUrl = http://localhost:3000
+@contentType = application/json
+
+### Health Check
+GET {{baseUrl}}/health
+
+###
+
+### Get All Todos
+GET {{baseUrl}}/api/todos
+
+###
+
+### Get Completed Todos
+GET {{baseUrl}}/api/todos?status=completed
+
+###
+
+### Get Pending Todos
+GET {{baseUrl}}/api/todos?status=pending
+
+###
+
+### Get Todo Statistics
+GET {{baseUrl}}/api/todos/stats
+
+###
+
+### Get Specific Todo (replace with actual ID)
+# @name getTodo
+GET {{baseUrl}}/api/todos/550e8400-e29b-41d4-a716-446655440000
+
+###
+
+### Create New Todo
+# @name createTodo
+POST {{baseUrl}}/api/todos
+Content-Type: {{contentType}}
+
+{
+  "title": "Learn Express.js",
+  "description": "Build a todo API with Express.js and Node.js"
+}
+
+###
+
+### Create Another Todo
+POST {{baseUrl}}/api/todos
+Content-Type: {{contentType}}
+
+{
+  "title": "Test the API",
+  "description": "Test all the endpoints using HTTP client"
+}
+
+###
+
+### Update Todo (replace with actual ID)
+# @name updateTodo
+PUT {{baseUrl}}/api/todos/550e8400-e29b-41d4-a716-446655440000
+Content-Type: {{contentType}}
+
+{
+  "title": "Learn Express.js - Updated",
+  "description": "Build an awesome todo API with Express.js and Node.js",
+  "completed": true
+}
+
+###
+
+### Toggle Todo Completion (replace with actual ID)
+PATCH {{baseUrl}}/api/todos/550e8400-e29b-41d4-a716-446655440000/toggle
+
+###
+
+### Delete Todo (replace with actual ID)
+DELETE {{baseUrl}}/api/todos/550e8400-e29b-41d4-a716-446655440000
+
+###
+
+### Create Todo with Minimal Data
+POST {{baseUrl}}/api/todos
+Content-Type: {{contentType}}
+
+{
+  "title": "Minimal Todo"
+}
+
+###
+
+### Test Error - Empty Title
+POST {{baseUrl}}/api/todos
+Content-Type: {{contentType}}
+
+{
+  "title": "",
+  "description": "This should fail"
+}
+
+###
+
+### Test Error - No Title
+POST {{baseUrl}}/api/todos
+Content-Type: {{contentType}}
+
+{
+  "description": "This should also fail"
+}
+
+###
+
+### Test 404 - Get Non-existent Todo
+GET {{baseUrl}}/api/todos/non-existent-id
+
+###
+
+### Test 404 - Update Non-existent Todo
+PUT {{baseUrl}}/api/todos/non-existent-id
+Content-Type: {{contentType}}
+
+{
+  "title": "This won't work"
+}
+
+###
+
+### Test 404 - Delete Non-existent Todo
+DELETE {{baseUrl}}/api/todos/non-existent-id
+
+###
